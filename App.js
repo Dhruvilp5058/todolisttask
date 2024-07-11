@@ -1,15 +1,17 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Provider } from 'react-redux'
-import store from './src/redux/store/store'
-import ToDoList from './src/screen/Todolist/ToDoList'
+import React from 'react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from './src/redux/store/store';
+import ToDoList from './src/screen/Todolist/ToDoList';
 
 const App = () => {
   return (
-  <Provider store={store}>
-    <ToDoList />
-  </Provider>
-  )
-}
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ToDoList />
+      </PersistGate>
+    </Provider>
+  );
+};
 
-export default App
+export default App;

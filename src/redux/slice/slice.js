@@ -5,7 +5,7 @@ const tasksSlice = createSlice({
   initialState: [],
   reducers: {
     addTask: (state, action) => {
-      state.push(action.payload);
+      state.push({ ...action.payload, done: false }); // This mutates state directly, which is incorrect
     },
     editTask: (state, action) => {
       const { id, title, date } = action.payload;
@@ -19,7 +19,10 @@ const tasksSlice = createSlice({
       return state.filter(task => task.id !== action.payload);
     },
     markTaskDone: (state, action) => {
-      return state.filter(task => task.id !== action.payload);
+      const existingTask = state.find(task => task.id === action.payload);
+      if (existingTask) {
+        existingTask.done = !existingTask.done;
+      }
     },
   },
 });
