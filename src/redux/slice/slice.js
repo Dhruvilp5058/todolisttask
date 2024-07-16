@@ -5,7 +5,7 @@ const tasksSlice = createSlice({
   initialState: [],
   reducers: {
     addTask: (state, action) => {
-      state.push({ ...action.payload, done: false }); // This mutates state directly, which is incorrect
+      state.push({ ...action.payload, done: false }); 
     },
     editTask: (state, action) => {
       const { id, title, date } = action.payload;

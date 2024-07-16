@@ -15,7 +15,7 @@ const ToDoList = () => {
 
   const handleEditTask = (id, task) => {
     dispatch(editTask({ id, ...task }));
-    setEditingTask(null); // Clear the editing task after saving
+    setEditingTask(null); 
   };
 
   const handleDeleteTask = (id) => {
